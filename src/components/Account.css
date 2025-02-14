@@ -1,0 +1,211 @@
+/*
+    -------------------
+    ----- Account.css -
+    -------------------
+*/
+
+/* Account Component */
+    /* --- Main Box--- */
+        .Account-entire-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            width: 100%;
+        }
+
+@media only screen and (min-width: 1100px){
+        .Account-entire-box img {
+            width: 55%; 
+            height: 55%; 
+            object-fit: cover; 
+            display: block; 
+            margin: 0 auto; 
+            border-radius: 10px;
+            border: solid 1px black;
+        }
+
+/* --- Login Box--- */
+    /* --- Login Title --- */
+        .Account-login-title {
+            position: absolute;
+            top: 40%; /* Adjust vertical positioning */
+            left: 32%; /* Move left */
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            color: white; /* Adjust for visibility */
+            border-radius: 5px;
+            margin-top: 1%;
+        }
+    
+    /* --- Login Inputs --- */
+        .Account-login-username-input{
+            position: absolute;
+            top: 50%; /* Adjust vertical positioning */
+            left: 32%; /* Move left */
+            transform: translate(-50%, -50%);
+            width: 175px; 
+            height: 25px; 
+            border-radius: 5px;
+        }
+
+        .Account-login-password-input{
+            position: absolute;
+            top: 54%; /* Adjust vertical positioning */
+            left: 32%; /* Move left */
+            transform: translate(-50%, -50%);
+            width: 175px; 
+            height: 25px; 
+            border-radius: 5px;
+        }
+
+        .Account-login-submit-button{
+            position: absolute;
+            top: 58%; /* Adjust vertical positioning */
+            left: 32%; /* Move left */
+            transform: translate(-50%, -50%);
+            width: 175px; 
+            height: 25px; 
+            border-radius: 5px;
+            background-color: purple; 
+            font-size: 15px;
+            color: white;
+        }
+
+    /* --- Sign Up Box--- */
+        /* --- Signup Title--- */
+
+        /* --- Sign Up Inputs --- */
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1100px){
+        .Account-entire-box img {
+            width: 55%; 
+            height: 55%; 
+            object-fit: cover; 
+            display: block; 
+            margin: 0 auto; 
+            border-radius: 10px;
+            border: solid 1px black;
+        }
+
+    /* --- Login Box--- */
+        /* --- Login Title --- */
+            .Account-login-title {
+                position: absolute;
+                top: 40%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                font-size: 2.5rem; 
+                font-weight: bold; 
+                color: white; /* Adjust for visibility */
+                border-radius: 5px;
+                margin-top: 1%;
+            }
+
+        /* --- Login Inputs --- */
+            .Account-login-username-input{
+                position: absolute;
+                top: 50%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+            }
+
+            .Account-login-password-input{
+                position: absolute;
+                top: 54%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+            }
+
+            .Account-login-submit-button{
+                position: absolute;
+                top: 58%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+                background-color: purple; 
+                font-size: 15px;
+                color: white;
+            }
+
+    /* --- Sign Up Box--- */
+        /* --- Signup Title--- */
+
+        /* --- Sign Up Inputs --- */
+}
+
+@media only screen and (max-width: 600px){
+        .Account-entire-box img {
+            width: 55%; 
+            height: 55%; 
+            object-fit: cover; 
+            display: block; 
+            margin: 0 auto; 
+            border-radius: 10px;
+            border: solid 1px black;
+        }
+
+    /* --- Login Box--- */
+        /* --- Login Title --- */
+            .Account-login-title {
+                position: absolute;
+                top: 40%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                font-size: 2.5rem; 
+                font-weight: bold; 
+                color: white; /* Adjust for visibility */
+                border-radius: 5px;
+                margin-top: 1%;
+            }
+
+        /* --- Login Inputs --- */
+            .Account-login-username-input{
+                position: absolute;
+                top: 50%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+            }
+
+            .Account-login-password-input{
+                position: absolute;
+                top: 54%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+            }
+
+            .Account-login-submit-button{
+                position: absolute;
+                top: 58%; /* Adjust vertical positioning */
+                left: 32%; /* Move left */
+                transform: translate(-50%, -50%);
+                width: 175px; 
+                height: 25px; 
+                border-radius: 5px;
+                background-color: purple; 
+                font-size: 15px;
+                color: white;
+            }
+
+    /* --- Sign Up Box--- */
+        /* --- Signup Title--- */
+
+        /* --- Sign Up Inputs --- */
+}
