@@ -1,13 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from './components/Home';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Account from './components/Account';
+import NextPage from './components/NextPage';  // Create this page
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Account />} />
+                <Route path="/nextPage" element={<NextPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
