@@ -5,12 +5,12 @@
 
 // Your Firebase configuration
     const firebaseConfig = {
-    apiKey: "HIDDEN",
-    authDomain: "HIDDEN",
-    projectId: "HIDDEN",
-    storageBucket: "HIDDEN",
-    messagingSenderId: "HIDDEN",
-    appId: "HIDDEN",
+    apiKey: "AIzaSyCumCkz_VqXhkffH0QLlRVaMfY5Sv_fv1c",
+    authDomain: "package-tracker-280db.firebaseapp.com",
+    projectId: "package-tracker-280db",
+    storageBucket: "package-tracker-280db.appspot.com",
+    messagingSenderId: "18655878023",
+    appId: "1:18655878023:web:c846f5012d2f937ffd5122",
     measurementId: "G-4P7PL07CGS"
     };
 
