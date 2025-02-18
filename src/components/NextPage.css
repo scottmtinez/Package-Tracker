@@ -1,0 +1,67 @@
+/*
+    -------------------
+    -- NextPage.css ---
+    -------------------
+*/
+
+/* --- Add Package to list --- */
+    .NextPage-add-package {
+        position: relative;
+        display: flex;
+        align-items: center; 
+    }
+
+    .NextPage-add-package-btn {
+        display: flex;
+        margin-left: auto;
+        margin-top: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        color: black;
+        padding: 10px 20px; 
+        cursor: pointer;
+        z-index: 2; 
+    }
+
+    .NextPage-add-package-btn:hover {
+        background-color: rgb(209, 209, 209);
+    }
+
+    .NextPage-add-package-btn:active {
+        transform: scale(1.1);
+    }
+
+    .bi.bi-plus-lg {
+        color: black;
+    }
+
+/* The input will be hidden behind the button initially */
+    .NextPage-input {
+        position: absolute;
+        top: 0;
+        right: 0; 
+        transform: translateX(100%); 
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        padding: 10px;
+        width: 600px; 
+        z-index: 1; 
+        margin-top: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+    }
+
+/* When the input is visible, slide it to the left of the button */
+    .NextPage-add-package.show-input .NextPage-input {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0); /* Slide the input box into view */
+    }
+
+    .Home-footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+    }
