@@ -28,8 +28,9 @@ function NextPage(){
         <div className='NextPage-container'>
             <Nav />
             <div className={`NextPage-add-package ${showInput ? 'show-input' : ''}`}>
+                <button className='NextPage-search-btn' style={{ visibility: showInput ? 'visible' : 'hidden', opacity: showInput ? 1 : 0, transition: 'opacity 0.3s ease' }}><i className="bi bi-search"></i></button>
                 <button className='NextPage-add-package-btn' onClick={toggleInput}>Add Package <i className={`bi ${showInput ? 'bi bi-x' : 'bi-plus-lg'}`}></i></button>
-                <input type="text" className="NextPage-input" placeholder='Add tracking number...' value={trackingNumber} onChange={handleInputChange} />
+                <input type="text" className="NextPage-input" placeholder='Add tracking number...' value={trackingNumber} onChange={handleInputChange} />  
             </div>
 
             <footer className='Home-footer'>Package Tracking Web Application | Portfolio Project | 2025</footer>

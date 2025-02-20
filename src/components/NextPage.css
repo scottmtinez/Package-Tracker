@@ -36,7 +36,7 @@
         color: black;
     }
 
-/* The input will be hidden behind the button initially */
+/* --- The input will be hidden behind the button initially --- */
     .NextPage-input {
         position: absolute;
         top: 0;
@@ -46,18 +46,18 @@
         visibility: hidden;
         transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
         padding: 10px;
-        width: 600px; 
+        width: 75%; 
         z-index: 1; 
         margin-top: 5px;
         margin-right: 5px;
         border-radius: 5px;
     }
 
-/* When the input is visible, slide it to the left of the button */
+/* --- When the input is visible, slide it to the left of the button --- */
     .NextPage-add-package.show-input .NextPage-input {
         opacity: 1;
         visibility: visible;
-        transform: translateX(0); /* Slide the input box into view */
+        transform: translateX(0); 
     }
 
     .Home-footer {
@@ -65,3 +65,24 @@
         margin-top: 20px;
         font-size: 14px;
     }
+
+/* --- Search Btn for Package Number --- */
+    .NextPage-search-btn {
+        display: flex;
+        border-radius: 5px;
+        height: 2.9em;
+        position: absolute;  
+        right: 160px;  
+        top: 54%;  
+        transform: translateY(-50%); 
+        z-index: 10; 
+    }
+
+    .NextPage-search-btn:hover {
+        background-color: rgb(209, 209, 209);
+    }
+
+    .bi.bi-search{
+        margin-top: 7px;
+    }
+  
