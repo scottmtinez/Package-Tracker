@@ -23,7 +23,12 @@ function NextPage(){
                 console.log('Tracking number to add to DB:', trackingNumber);
         };
 
+      //
+
+
+      ///
     
+
     return (
         <div className='NextPage-container'>
             <Nav />
