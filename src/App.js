@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Account from './components/Account';
 import NextPage from './components/NextPage';  
 import Home from './components/Home';  
+import UsersAccountInfo from './components/UsersAccountInfo';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/nextPage" element={<NextPage />} />
+                <Route path="/myaccount" element={<UsersAccountInfo />} />
             </Routes>
         </Router>
     );
