@@ -11,3 +11,35 @@
     align-items: center;
 }
 
+.Account-User-info{
+    border: solid 3px purple;
+    border-radius: 5px;
+    margin-top: 25%;
+    padding: 15%; 
+}
+
+h1{
+    
+}
+
+p{
+    
+}
+
+button{
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5%;
+    cursor: pointer;
+    transition: 0.3s;
+    border: solid 1px black;
+}
+
+button:hover{
+    background-color: white;
+    color: purple;
+    border: solid 1px purple;
+}
