@@ -37,16 +37,15 @@ function UsersAccountInfo() {
             <div className='Account-content'>
                 {user ? (
                     <>
-                        <h1>Account Information</h1>
-                        <div className="user-info">
+                        <div className="Account-User-info">
+                            <h1>Account Information</h1>
                             <p><strong>Name:</strong> {user.displayName || "N/A"}</p>
                             <p><strong>Email:</strong> {user.email || "N/A"}</p>
                             <p><strong>UID:</strong> {user.uid}</p>
+                            <button className='logout-button' onClick={logout}>
+                                Logout
+                            </button>
                         </div>
-                        {/* Logout button */}
-                        <button className='logout-button' onClick={logout}>
-                            Logout
-                        </button>
                     </>
                 ) : (
                     <p>Please log in to view your account details.</p>
