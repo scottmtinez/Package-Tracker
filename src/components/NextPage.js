@@ -90,6 +90,8 @@ function NextPage() {
                     <p>No tracking numbers added yet.</p>
                 )}
             </div>
+<div>
+</div>
 
             <footer className='Home-footer'>Package Tracking Web Application | Portfolio Project | 2025</footer>
         </div>
