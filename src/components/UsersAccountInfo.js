@@ -3,8 +3,8 @@ import './UsersAccountInfo.css';
 import Nav from './Nav';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { auth } from './FirebaseConfig';
-import { signOut } from 'firebase/auth';  // Import signOut function
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { signOut } from 'firebase/auth';  
+import { useNavigate } from 'react-router-dom';  
 
 function UsersAccountInfo() {
     // States
