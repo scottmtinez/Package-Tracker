@@ -59,26 +59,23 @@ function NextPage() {
 
     // Handle adding to Firebase DB
         const handleAddToDB = async () => {
-            if (trackingNumber.trim() === '') {
-                console.warn("Attempted to add an empty tracking number.");
-                return;
-            }
-
+            if (trackingNumber.trim() === '') return;
+        
             try {
-                console.log("Adding tracking number to Firestore:", trackingNumber);
                 const docRef = await addDoc(collection(db, "TrackingNumbers"), {
-                    number: trackingNumber
+                    numbers: [trackingNumber],  // Store initial tracking number in an array
                 });
+        
                 console.log("Tracking number added with ID:", docRef.id);
-                
-                // Update state to display the new tracking number immediately
-                setTrackingList([...trackingList, { id: docRef.id, number: trackingNumber }]);
-                setTrackingNumber(''); 
+        
+                // Update the state to display the new tracking number immediately
+                setTrackingList([...trackingList, { id: docRef.id, numbers: [trackingNumber] }]);
+                setTrackingNumber('');
             } catch (error) {
                 console.error("Error adding tracking number:", error);
             }
         };
-
+        
     return (
         <div className='NextPage-container'>
             <Nav />
