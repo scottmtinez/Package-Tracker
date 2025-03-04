@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './NextPage.css';
 import Nav from './Nav';
-import { db } from './FirebaseConfig'; // Import Firebase Firestore
+import { db } from './FirebaseConfig'; 
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 function NextPage() {
@@ -23,30 +23,57 @@ function NextPage() {
     // Fetch tracking numbers from Firestore
     useEffect(() => {
         const fetchTrackingNumbers = async () => {
-            const querySnapshot = await getDocs(collection(db, "TrackingNumbers"));
-            const trackingData = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                number: doc.data().number
-            }));
-            setTrackingList(trackingData);
+            try {
+                console.log("Fetching tracking numbers from Firestore...");
+                const querySnapshot = await getDocs(collection(db, "TrackingNumbers"));
+    
+                if (querySnapshot.empty) {
+                    console.warn("No tracking numbers found in Firestore.");
+                }
+    
+                const trackingData = querySnapshot.docs.map((doc) => {
+                    const data = doc.data();
+                    console.log("Document data:", data); // Debugging: See the actual Firestore document structure
+                    return {
+                        id: doc.id,
+                        number: data.number || "No number found" // Handle missing fields
+                    };
+                });
+    
+                console.log("Fetched tracking data:", trackingData);
+                setTrackingList(trackingData);
+            } catch (error) {
+                console.error("Error fetching tracking numbers:", error);
+            }
         };
-
+    
         fetchTrackingNumbers();
     }, []);
+    
+    // Debugging: Check if state updates
+    useEffect(() => {
+        console.log("Updated tracking list state:", trackingList);
+    }, [trackingList]); // Runs when `trackingList` changes
+    
+    
 
     // Handle adding to Firebase DB
     const handleAddToDB = async () => {
-        if (trackingNumber.trim() === '') return; // Prevent empty submissions
-        
+        if (trackingNumber.trim() === '') {
+            console.warn("Attempted to add an empty tracking number.");
+            return;
+        }
+
         try {
-            const docRef = await addDoc(collection(db, "trackingNumbers"), {
+            console.log("Adding tracking number to Firestore:", trackingNumber);
+            const docRef = await addDoc(collection(db, "TrackingNumbers"), {
                 number: trackingNumber
             });
             console.log("Tracking number added with ID:", docRef.id);
             
             // Update state to display the new tracking number immediately
             setTrackingList([...trackingList, { id: docRef.id, number: trackingNumber }]);
-            setTrackingNumber(''); // Clear input field
+            setTrackingNumber(''); 
         } catch (error) {
             console.error("Error adding tracking number:", error);
         }
@@ -81,8 +108,8 @@ function NextPage() {
                 {trackingList.length > 0 ? (
                     <ul>
                         {trackingList.map((item) => (
-                            <li key={item.id}>
-                                <strong>Tracking Number:</strong> {item.number}
+                            <li className='NextPage-li' key={item.id}>
+                                <strong>{item.number}</strong>
                             </li>
                         ))}
                     </ul>
@@ -90,10 +117,10 @@ function NextPage() {
                     <p>No tracking numbers added yet.</p>
                 )}
             </div>
-<div>
-</div>
 
-            <footer className='Home-footer'>Package Tracking Web Application | Portfolio Project | 2025</footer>
+            <footer className='Home-footer'>
+                Package Tracking Web Application | Portfolio Project | 2025
+            </footer>
         </div>
     );
 }
