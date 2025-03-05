@@ -111,3 +111,39 @@
         justify-content: center;
         margin-top: 20px;
     }
+
+    .NextPage-li{
+        list-style-type: none;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: transparent;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .NextPage-li-content{
+        background-color: transparent;
+    }
+
+    .NextPage-tracking-button{
+        background-color: transparent;
+        color: black;
+        border: 1px solid black;
+    }
+
+    .NextPage-tracking-button:hover{
+        background-color: purple;
+        color: whitesmoke;
+    }
+
+    .NextPage-dropdown-content {
+        background-color: whitesmoke;
+        border-radius: 5px;  
+    }
+    
+    .NextPage-dropdown-text{
+        padding: 10px;
+        cursor: pointer;
+    }
