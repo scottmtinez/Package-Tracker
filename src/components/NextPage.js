@@ -9,6 +9,7 @@ function NextPage() {
         const [showInput, setShowInput] = useState(false);
         const [trackingNumber, setTrackingNumber] = useState('');
         const [trackingList, setTrackingList] = useState([]);
+        const [expandedItem, setExpandedItem] = useState(null);
 
     // Toggle the input visibility
         const toggleInput = () => {
@@ -75,6 +76,11 @@ function NextPage() {
                 console.error("Error adding tracking number:", error);
             }
         };
+    
+    // Toggle dropdown content
+        const toggleDropdown = (id) => {
+            setExpandedItem(expandedItem === id ? null : id);
+        };
         
     return (
         <div className='NextPage-container'>
@@ -106,7 +112,21 @@ function NextPage() {
                     <ul>
                         {trackingList.map((item) => (
                             <li className='NextPage-li' key={item.id}>
-                                <strong>{item.number}</strong>
+                                <div className='NextPage-li-content'>
+                                    <button className='NextPage-tracking-button' onClick={() => toggleDropdown(item.id)}>
+                                        {item.number}
+                                    </button>
+                                </div>
+                                {expandedItem === item.id && (
+                                    <div className='NextPage-dropdown-content'>
+                                        <p className='NextPage-dropdown-text'>
+                                            Tracking Number: {item.number} <br />
+                                            Item: X<br />
+                                            Shipper: X<br />
+                                            XXX: X
+                                        </p>
+                                    </div>
+                                )}
                             </li>
                         ))}
                     </ul>
