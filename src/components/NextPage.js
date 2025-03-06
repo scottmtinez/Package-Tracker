@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './NextPage.css';
 import Nav from './Nav';
 import { db } from './FirebaseConfig'; 
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 function NextPage() {
     // States
@@ -10,6 +10,8 @@ function NextPage() {
         const [trackingNumber, setTrackingNumber] = useState('');
         const [trackingList, setTrackingList] = useState([]);
         const [expandedItem, setExpandedItem] = useState(null);
+
+        const docRef = doc(db, "TrackingNumbers", "Packages");
 
     // Toggle the input visibility
         const toggleInput = () => {
@@ -25,58 +27,53 @@ function NextPage() {
         useEffect(() => {
             const fetchTrackingNumbers = async () => {
                 try {
-                    console.log("Fetching tracking numbers from Firestore...");
-                    const querySnapshot = await getDocs(collection(db, "TrackingNumbers"));
-        
-                    if (querySnapshot.empty) {
-                        console.warn("No tracking numbers found in Firestore.");
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        console.log("Document data:", data);
+                        setTrackingList(data.PackageArray || []); // Store array
+                    } else {
+                        console.warn("No such document!");
                     }
-        
-                    const trackingData = querySnapshot.docs.map((doc) => {
-                        const data = doc.data();
-                        console.log("Document data:", data); // Debugging: See the actual Firestore document structure
-                        return {
-                            id: doc.id,
-                            number: data.number || "No number found" // Handle missing fields
-                        };
-                    });
-        
-                    console.log("Fetched tracking data:", trackingData);
-                    setTrackingList(trackingData);
                 } catch (error) {
                     console.error("Error fetching tracking numbers:", error);
                 }
             };
-        
             fetchTrackingNumbers();
         }, []);
     
     // Debugging: Check if state updates
         useEffect(() => {
             console.log("Updated tracking list state:", trackingList);
-        }, [trackingList]); // Runs when `trackingList` changes
+        }, [trackingList]); 
     
-    
-
     // Handle adding to Firebase DB
         const handleAddToDB = async () => {
             if (trackingNumber.trim() === '') return;
-        
+
             try {
-                const docRef = await addDoc(collection(db, "TrackingNumbers"), {
-                    numbers: [trackingNumber],  // Store initial tracking number in an array
+                const newEntry = {
+                    id: Date.now().toString(), // Unique ID for frontend use
+                    trackingNumber: trackingNumber,
+                    item: "Unknown",
+                    shipper: "Unknown",
+                    estimatedDelivery: "Unknown"
+                };
+
+                await updateDoc(docRef, {
+                    PackageArray: arrayUnion(newEntry) // Add new entry to array
                 });
-        
-                console.log("Tracking number added with ID:", docRef.id);
-        
-                // Update the state to display the new tracking number immediately
-                setTrackingList([...trackingList, { id: docRef.id, numbers: [trackingNumber] }]);
+
+                console.log("Tracking number added:", newEntry);
+
+                // Update state to reflect new data
+                setTrackingList([...trackingList, newEntry]);
                 setTrackingNumber('');
             } catch (error) {
                 console.error("Error adding tracking number:", error);
             }
         };
-    
+   
     // Toggle dropdown content
         const toggleDropdown = (id) => {
             setExpandedItem(expandedItem === id ? null : id);
@@ -110,20 +107,20 @@ function NextPage() {
                 <h3>Tracking Numbers</h3>
                 {trackingList.length > 0 ? (
                     <ul>
-                        {trackingList.map((item) => (
-                            <li className='NextPage-li' key={item.id}>
+                        {trackingList.map((item, index) => (
+                            <li className='NextPage-li' key={item.id || index}>
                                 <div className='NextPage-li-content'>
-                                    <button className='NextPage-tracking-button' onClick={() => toggleDropdown(item.id)}>
-                                        {item.number}
+                                    <button className='NextPage-tracking-button' onClick={() => toggleDropdown(item.id || index)}>
+                                        {item.trackingNumber || "Unknown Tracking Number"}
                                     </button>
                                 </div>
-                                {expandedItem === item.id && (
+                                {expandedItem === (item.id || index) && (
                                     <div className='NextPage-dropdown-content'>
                                         <p className='NextPage-dropdown-text'>
-                                            Tracking Number: {item.number} <br />
-                                            Item: X<br />
-                                            Shipper: X<br />
-                                            XXX: X
+                                            Tracking Number: {item.trackingNumber || "Unknown Tracking Number"} <br />
+                                            Item: {item.item || "Unknown"}<br />
+                                            Shipper: {item.shipper || "Unknown"}<br />
+                                            Estimated Delivery: {item.estimatedDelivery || "Unknown"}
                                         </p>
                                     </div>
                                 )}
@@ -134,6 +131,7 @@ function NextPage() {
                     <p>No tracking numbers added yet.</p>
                 )}
             </div>
+
 
             <footer className='Home-footer'>
                 Package Tracking Web Application | Portfolio Project | 2025
